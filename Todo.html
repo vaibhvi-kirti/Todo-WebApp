@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Sevillana&display=swap" rel="stylesheet">
+<title>TODO APP</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      background-color: rgb(230, 230, 250);
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 550;
+      
+    }
+    #AA{
+      text-align: center;
+      font-family: "sevillana";
+      font-size:80px;
+    }
+    button{
+      background-color: rgb(173,173,221);
+      height: 30px;
+      width: 90px;
+      border-radius: 15px;
+      border: none;
+    }
+    input{
+      background-color: rgba(200, 200, 241, 0.781);
+      border-radius: 8px;
+      border: none;
+    }
+   .sevillana-regular {
+  font-family: "Sevillana", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+#Ab{
+  display: grid;
+  grid-template-columns: 250px 250px 200px;
+  row-gap: 20px;
+  column-gap: 50px;
+}
+#A1{
+  display:grid;
+  grid-template-columns: 250px 250px 200px;
+  row-gap: 20px;
+  column-gap: 50px;
+  margin-top: 20px;
+}
+h1{
+  font-weight: 400;
+}
+  </style>
+</head>
+<body>
+  <h1 id="AA">Todo App</h1>
+  <div id="Ab"><input id="in" type="text" placeholder="Enter the task to do...">
+    <input id="A2" type="date">
+    <button onclick="addtask();">Add</button></div>
+  
+  <div id="A1"></div>
+  <script>
+   let tlist=[];
+   displaytask();
+   function addtask(){
+   let inp=document.querySelector('#in');
+   let d=document.querySelector('#A2');
+   let t=inp.value;
+   let t1=d.value;
+   tlist.push({item: t,duedate:t1});
+    displaytask();
+    inp.value='';
+    d.value='';
+   }
+   function displaytask(){
+    let d=document.querySelector('#A1');
+    let newHtml='';
+    for(let i=0;i<tlist.length;i++)
+    {
+      let it=tlist[i].item;
+      let dates=tlist[i].duedate;
+      newHtml+=`<span>${it}</span>
+        <span>${dates}</span>
+  <button onclick="tlist.splice(${i},1);displaytask();">Delete</button>`;
+    }
+    d.innerHTML=newHtml;
+   }
+
+  </script>
+</body>
+</html>
